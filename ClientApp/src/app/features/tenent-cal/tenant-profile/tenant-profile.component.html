@@ -1,0 +1,35 @@
+<div class="d-flex flex-column profile">
+  <p>Tenant Profile</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Year</mat-label>
+    <mat-select [disabled]="disableResultInputs" [(value)]="selectedYear">
+      <mat-option *ngFor="let year of yearSelections" [value]="year.value">
+        {{ year.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <p>
+    Tier 1 Rent: ${{
+      profile.percentageRentTier1[selectedYear] | number: "1.2-2"
+    }}
+  </p>
+
+  <p>
+    Tier 2 Rent: ${{
+      profile.percentageRentTier2[selectedYear] | number: "1.2-2"
+    }}
+  </p>
+  <p>
+    Tier 3 Rent: ${{
+      profile.percentageRentTier3[selectedYear] | number: "1.2-2"
+    }}
+  </p>
+
+  <mat-divider></mat-divider>
+
+  <p>
+    Total Percentage Rent: $
+    {{ profile.totalPercentageRents[selectedYear] | number: "1.2-2" }}
+  </p>
+</div>
